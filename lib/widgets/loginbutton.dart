@@ -4,16 +4,18 @@ import 'package:google_fonts/google_fonts.dart';
 class LoginButton extends StatelessWidget {
   final String text;
   final Color color;
+  final void Function()? buttonPressed;
   LoginButton({
     Key? key,
     required this.text,
     required this.color,
+    this.buttonPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: buttonPressed,
       style: ElevatedButton.styleFrom(
         elevation: 0,
         primary: color,
