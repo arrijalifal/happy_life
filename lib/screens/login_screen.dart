@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:happy_life/widgets/loginbutton.dart';
 import 'package:happy_life/widgets/textfield_up.dart';
 import 'package:happy_life/constants/colorpallete.dart';
 
@@ -11,55 +13,28 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          width: MediaQuery.of(context).size.width / 1.3,
-          height: MediaQuery.of(context).size.height / 2,
-          decoration: BoxDecoration(
-            color: color1,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Stop\nShaking',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                textStyle: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
-          ),
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                child: Text(
-                  "Login!",
-                  style: TextStyle(
-                    color: color2,
-                    fontSize: 50,
-                  ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 20,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    InputUsernamePassword(
-                      controller: username_controller,
-                      label: "Username",
-                      bordercolor: color2,
-                      textcolor: color2,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    InputUsernamePassword(
-                      controller: password_controller,
-                      label: "Password",
-                      bordercolor: color2,
-                      textcolor: color2,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            SizedBox(
+              height: 40,
+            ),
+            LoginButton(text: "Login", color: primaryColor[500]!,),
+            SizedBox(
+              height: 10,
+            ),
+            LoginButton(text: "Sign Up", color: primaryColor[900]!,),
+          ],
         ),
       ),
     );
