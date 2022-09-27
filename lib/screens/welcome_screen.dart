@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:happy_life/widgets/fadeinandout.dart';
 import 'package:happy_life/widgets/loginbutton.dart';
-import 'package:happy_life/widgets/textfield_up.dart';
 import 'package:happy_life/constants/colorpallete.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
@@ -48,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Haha Hihi\nChaaakkzz',
+                'Happy\nLife',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                   textStyle: const TextStyle(
@@ -80,12 +79,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           isShown: _textfieldshown,
                           child: TextField(
                             onChanged: (value) {
-                              debugPrint("($value)");
                               setState(() {
                                 if (value.isEmpty) {
                                   _isTextEmpty = true;
-                                }
-                                else {
+                                } else {
                                   _isTextEmpty = false;
                                 }
                               });
@@ -119,19 +116,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ? (_isTextEmpty)
                         ? null
                         : () {
-                            debugPrint("berhasil");
+                            Timer(const Duration(milliseconds: 500), () {
+                              Navigator.pushNamed(context, '/dashboard', arguments: _signature.text);
+                            });
                           }
                     : () {
-                        Timer(const Duration(milliseconds: 200), () {
+                        Timer(const Duration(milliseconds: 500), () {
                           setState(() {
                             _textfieldshown = !_textfieldshown;
                           });
                         });
-                        if (!_textfieldshown) {
-                          setState(() {
-                            _signupvisibility = !_textfieldshown;
-                          });
-                        }
                       },
               ),
             ],
